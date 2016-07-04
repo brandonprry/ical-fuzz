@@ -1,0 +1,3 @@
+Results from fuzzing libical.
+
+Hopefully these can be used for fuzzing other iCal parsers such as Apple Mail or Outlook.
