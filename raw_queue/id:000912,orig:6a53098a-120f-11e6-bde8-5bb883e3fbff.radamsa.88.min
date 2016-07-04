@@ -1,0 +1,12 @@
+BEGIN:VCALENDAR
+0:;
+ 
+RRULE
+ :FREQ=MONTHLY;COUNT=;BYDAY=TU,,+,,
+
+
+
+
+
+
+

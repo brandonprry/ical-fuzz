@@ -1,0 +1,10 @@
+BEGIN:
+X;
+X-0\d\r\n\n\n0\0
+0;
+END;
+R
+DTEND:0
+CATEGORIES;(0;0\d\r\n\n\n0\0
+0;
+END:0
