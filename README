@@ -1,3 +1,3 @@
-Results from fuzzing libical.
+Results from fuzzing libical, used in Thunderbird, Evolution, Kontact, and other email clients.
 
 Hopefully these can be used for fuzzing other iCal parsers such as Apple Mail or Outlook.
