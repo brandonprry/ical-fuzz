@@ -1,0 +1,60 @@
+=================================================================
+==9762==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200000ef32 at pc 0x000000511d4f bp 0x7ffed5dad4b0 sp 0x7ffed5dad4a8
+READ of size 1 at 0x60200000ef32 thread T0
+    #0 0x511d4e in icalmemory_strdup_and_dequote (/root/tmp/new_parse/parse_string047_asan+0x511d4e)
+    #1 0x510b1e in icalvalue_new_from_string_with_error (/root/tmp/new_parse/parse_string047_asan+0x510b1e)
+    #2 0x512f76 in icalvalue_new_from_string (/root/tmp/new_parse/parse_string047_asan+0x512f76)
+    #3 0x4f4773 in icalparser_add_line (/root/tmp/new_parse/parse_string047_asan+0x4f4773)
+    #4 0x4efabe in icalparser_parse (/root/tmp/new_parse/parse_string047_asan+0x4efabe)
+    #5 0x4f9c1f in icalparser_parse_string (/root/tmp/new_parse/parse_string047_asan+0x4f9c1f)
+    #6 0x4eb7ef in main (/root/tmp/new_parse/parse_string047_asan+0x4eb7ef)
+    #7 0x7ff886f6ba3f in __libc_start_main /build/glibc-ryFjv0/glibc-2.21/csu/libc-start.c:289
+    #8 0x444ae8 in _start (/root/tmp/new_parse/parse_string047_asan+0x444ae8)
+
+0x60200000ef32 is located 0 bytes to the right of 2-byte region [0x60200000ef30,0x60200000ef32)
+allocated by thread T0 here:
+    #0 0x4cbab2 in malloc (/root/tmp/new_parse/parse_string047_asan+0x4cbab2)
+    #1 0x5c443d in icalmemory_new_buffer (/root/tmp/new_parse/parse_string047_asan+0x5c443d)
+    #2 0x4ed798 in make_segment (/root/tmp/new_parse/parse_string047_asan+0x4ed798)
+    #3 0x4f7325 in parser_get_next_value (/root/tmp/new_parse/parse_string047_asan+0x4f7325)
+    #4 0x4f42ca in icalparser_add_line (/root/tmp/new_parse/parse_string047_asan+0x4f42ca)
+    #5 0x4efabe in icalparser_parse (/root/tmp/new_parse/parse_string047_asan+0x4efabe)
+    #6 0x4f9c1f in icalparser_parse_string (/root/tmp/new_parse/parse_string047_asan+0x4f9c1f)
+    #7 0x4eb7ef in main (/root/tmp/new_parse/parse_string047_asan+0x4eb7ef)
+    #8 0x7ff886f6ba3f in __libc_start_main /build/glibc-ryFjv0/glibc-2.21/csu/libc-start.c:289
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow ??:0 icalmemory_strdup_and_dequote
+Shadow bytes around the buggy address:
+  0x0c047fff9d90: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9da0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9db0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9dc0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9dd0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+=>0x0c047fff9de0: fa fa 02 fa fa fa[02]fa fa fa 03 fa fa fa fd fa
+  0x0c047fff9df0: fa fa 04 fa fa fa fd fd fa fa fd fd fa fa fd fa
+  0x0c047fff9e00: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9e10: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9e20: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9e30: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==9762==ABORTING

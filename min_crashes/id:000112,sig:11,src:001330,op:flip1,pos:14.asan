@@ -1,0 +1,57 @@
+=================================================================
+==27709==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60700000db4f at pc 0x0000004fa776 bp 0x7fffc46eebf0 sp 0x7fffc46eebe8
+READ of size 1 at 0x60700000db4f thread T0
+    #0 0x4fa775 in parser_get_next_char (/root/tmp/new_parse/parse_string047_asan+0x4fa775)
+    #1 0x4f5c3a in parser_get_prop_name (/root/tmp/new_parse/parse_string047_asan+0x4f5c3a)
+    #2 0x4f0b37 in icalparser_add_line (/root/tmp/new_parse/parse_string047_asan+0x4f0b37)
+    #3 0x4efabe in icalparser_parse (/root/tmp/new_parse/parse_string047_asan+0x4efabe)
+    #4 0x4f9c1f in icalparser_parse_string (/root/tmp/new_parse/parse_string047_asan+0x4f9c1f)
+    #5 0x4eb7ef in main (/root/tmp/new_parse/parse_string047_asan+0x4eb7ef)
+    #6 0x7fa4d8fe8a3f in __libc_start_main /build/glibc-ryFjv0/glibc-2.21/csu/libc-start.c:289
+    #7 0x444ae8 in _start (/root/tmp/new_parse/parse_string047_asan+0x444ae8)
+
+0x60700000db4f is located 1 bytes to the left of 80-byte region [0x60700000db50,0x60700000dba0)
+allocated by thread T0 here:
+    #0 0x4cbab2 in malloc (/root/tmp/new_parse/parse_string047_asan+0x4cbab2)
+    #1 0x5c443d in icalmemory_new_buffer (/root/tmp/new_parse/parse_string047_asan+0x5c443d)
+    #2 0x4edf05 in icalparser_get_line (/root/tmp/new_parse/parse_string047_asan+0x4edf05)
+    #3 0x4efa42 in icalparser_parse (/root/tmp/new_parse/parse_string047_asan+0x4efa42)
+    #4 0x4f9c1f in icalparser_parse_string (/root/tmp/new_parse/parse_string047_asan+0x4f9c1f)
+    #5 0x4eb7ef in main (/root/tmp/new_parse/parse_string047_asan+0x4eb7ef)
+    #6 0x7fa4d8fe8a3f in __libc_start_main /build/glibc-ryFjv0/glibc-2.21/csu/libc-start.c:289
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow ??:0 parser_get_next_char
+Shadow bytes around the buggy address:
+  0x0c0e7fff9b10: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0e7fff9b20: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0e7fff9b30: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0e7fff9b40: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0e7fff9b50: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+=>0x0c0e7fff9b60: fa fa fa fa fa fa fa fa fa[fa]00 00 00 00 00 00
+  0x0c0e7fff9b70: 00 00 00 00 fa fa fa fa fd fd fd fd fd fd fd fd
+  0x0c0e7fff9b80: fd fd fa fa fa fa 00 00 00 00 00 00 00 00 00 00
+  0x0c0e7fff9b90: fa fa fa fa fd fd fd fd fd fd fd fd fd fd fa fa
+  0x0c0e7fff9ba0: fa fa fd fd fd fd fd fd fd fd fd fd fa fa fa fa
+  0x0c0e7fff9bb0: fd fd fd fd fd fd fd fd fd fd fa fa fa fa fd fd
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==27709==ABORTING

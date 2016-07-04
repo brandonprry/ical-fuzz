@@ -1,0 +1,14 @@
+ASAN:SIGSEGV
+=================================================================
+==10837==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000008 (pc 0x0000004fbb80 bp 0x7ffd8ffabc50 sp 0x7ffd8ffaba80 T0)
+    #0 0x4fbb7f in icalproperty_new_clone (/root/tmp/new_parse/parse_string047_asan+0x4fbb7f)
+    #1 0x4f44e6 in icalparser_add_line (/root/tmp/new_parse/parse_string047_asan+0x4f44e6)
+    #2 0x4efabe in icalparser_parse (/root/tmp/new_parse/parse_string047_asan+0x4efabe)
+    #3 0x4f9c1f in icalparser_parse_string (/root/tmp/new_parse/parse_string047_asan+0x4f9c1f)
+    #4 0x4eb7ef in main (/root/tmp/new_parse/parse_string047_asan+0x4eb7ef)
+    #5 0x7fc6a6698a3f in __libc_start_main /build/glibc-ryFjv0/glibc-2.21/csu/libc-start.c:289
+    #6 0x444ae8 in _start (/root/tmp/new_parse/parse_string047_asan+0x444ae8)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV ??:0 icalproperty_new_clone
+==10837==ABORTING
